@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ninja Gold!</title>
+  <style type="text/css">
+    body {
+      text-align: center;
+      margin-top: 100px;
+    }
+    #activities {
+      height: 200px;
+      overflow: scroll;
+    }
+  </style>
+</head>
+<body>
+
+  <p>Your Gold: {{session['gold']}}</p>
+  <br><br>
+  <table style="text-align: center; width: 80%; margin: auto;">
+    <tr>
+      <td>
+        <h4>Farm</h4>
+        <p>(earns 10-20)</p>
+        <br><br>
+        <form action="/process_money" method="POST">
+          <input type="hidden" name="building" value="farm">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </td>
+      <td>
+        <h4>Cave</h4>
+        <p>(earns 5-10)</p>
+        <br><br>
+        <form action="/process_money" method="POST">
+          <input type="hidden" name="building" value="cave">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </td>
+      <td>
+        <h4>House</h4>
+        <p>(earns 2-5)</p>
+        <br><br>
+        <form action="/process_money" method="POST">
+          <input type="hidden" name="building" value="house">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </td>
+      <td>
+        <h4>Casino</h4>
+        <p>(earns/takes 0-50)</p>
+        <br><br>
+        <form action="/process_money" method="POST">
+          <input type="hidden" name="building" value="casino">
+          <input type="submit" value="Find Gold!">
+        </form>
+      </td>
+    </tr>
+  </table>
+  <br><br>
+  <p>Activities:</p>
+  <div id="activities">
+    {% for item in reverse(session['log']): %}
+      <p>{{item}}</p>
+    {% endfor %}
+  </div>
+
+</body>
+</html>
