@@ -60,7 +60,7 @@
   <br><br>
   <p>Activities:</p>
   <div id="activities">
-    {% for item in reverse(session['log']): %}
+    {% for item in session['log'][::-1] %}
       <p>{{item}}</p>
     {% endfor %}
   </div>
